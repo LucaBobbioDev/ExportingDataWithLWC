@@ -19,4 +19,9 @@ Foi utilizado a biblioteca externa [write-excel-file](https://www.npmjs.com/pack
 2 - Classe de teste para ExportDataController class
 
 ### Visualização da tela customizada
+Tela Inicial:
 ![Export Data Screen](image.png)
+
+Tela com dados preenchidos:
+![image](https://github.com/LucaBobbioDev/ExportingDataWithLWC/assets/95222294/1a768349-2eec-423c-9003-34e305c94e3b)
+
