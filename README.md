@@ -3,6 +3,7 @@ Simples projeto desenevolvido no CRM Salesforce onde foi desenvolvido a funciona
 
 ### Componentes de Lightning Web Components
 1 - Lookup: Componente de pesquisa de registros localizados na base de dados da org;
+
 2 - ExportData: Componente principal que incorpora a maioria das funcionalidade como também o componente de pesquisa.
 
 ### Biblioteca Externa
@@ -14,7 +15,8 @@ Foi utilizado a biblioteca externa [write-excel-file](https://www.npmjs.com/pack
 
 ### Classes de Teste
 1 - Classe de teste para Lookup class
-1 - Classe de teste para ExportDataController class
+
+2 - Classe de teste para ExportDataController class
 
 ### Visualização da tela customizada
 ![Export Data Screen](image.png)
