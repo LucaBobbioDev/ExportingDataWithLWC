@@ -98,20 +98,6 @@ export default class ExportDataScreen extends LightningElement {
         this.isXLSX = name === 'xlsxFile' && checked;
         this.isXLS = name === 'xlsFile' && checked;
         this.disabledField = checked && (this.isXLSX || this.isXLS);
-
-        // if(name == 'xlsxFile' && checked === true){
-        //     this.isXLSX = checked;
-        //     this.isXLS = !checked;
-        //     this.disabledField = checked;
-        // } else if (name == 'xlsFile' && checked === true){
-        //     this.isXLS = checked;
-        //     this.isXLSX = !checked;
-        //     this.disabledField = checked;
-        // } else {
-        //     this.isXLS = checked; 
-        //     this.isXLSX = checked;
-        //     this.disabledField = checked; 
-        // }
     }
 
     buildReportDoc(){
