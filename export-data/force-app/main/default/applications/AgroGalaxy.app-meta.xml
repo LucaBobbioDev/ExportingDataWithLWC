@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <brand>
+        <headerColor>#51DA8F</headerColor>
+        <logo>agrogalaxy</logo>
+        <logoVersion>1</logoVersion>
+        <shouldOverrideOrgTheme>false</shouldOverrideOrgTheme>
+    </brand>
+    <formFactors>Small</formFactors>
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
+    <label>AgroGalaxy</label>
+    <navType>Standard</navType>
+    <tabs>standard-Account</tabs>
+    <tabs>Export_Data</tabs>
+    <uiType>Lightning</uiType>
+    <utilityBar>AgroGalaxy_UtilityBar</utilityBar>
+</CustomApplication>

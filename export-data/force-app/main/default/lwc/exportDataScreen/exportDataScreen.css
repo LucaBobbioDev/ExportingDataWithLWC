@@ -1,0 +1,79 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: Salesforce Sans;
+}
+:host {
+    --sds-c-checkbox-color-background-checked: #2A9676;
+    --sds-c-checkbox-mark-color-foreground: white;
+    --sds-c-checkbox-border-radius: 5px;
+}
+
+.title{
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    border-bottom: 1px solid rgba(157, 151, 151, 0.51);
+}
+
+.container{
+    background-color: white;
+    box-shadow: 10px 5px 5px rgba(42, 150, 118, 0.2);
+    border: solid 1px #2A9676;
+    padding: 40px;
+    margin-left: 13%;
+    min-width: 560px;
+    width: 75%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap:10px;
+    border-radius: 15px;
+}
+
+.fields-to-search{
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    justify-content: space-around;
+    gap: 10px;
+}
+
+.execution{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+
+button {
+    background: #2a9676;
+    color: white;
+    padding: 12px;
+    font-size: 14px;
+    border: 1px solid grey;
+    border-left: none; 
+    cursor: pointer;
+    border-radius: 0 4px 4px 0;
+    width: 30%;
+}
+  
+button:hover {
+    background: #127B5C;
+}
+
+a, a:hover, a:focus, a:active, button {
+    text-decoration: none;
+    color: white;
+    border: 1px solid #2A9676;
+    background-color: #2A9676;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+a:hover, button:hover{
+    background: linear-gradient(to right,rgb(99, 206, 174), rgba(42, 150, 118, 1));
+}

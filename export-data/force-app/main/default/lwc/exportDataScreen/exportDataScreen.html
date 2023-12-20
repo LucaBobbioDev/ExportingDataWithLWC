@@ -1,0 +1,71 @@
+<template>
+    <div class="container">
+        <div class="title">
+            <div>Exportação de Pedidos</div>
+        </div>
+        <div class="fields-to-search">
+            <c-lookup
+                data-target-id="account"
+                input-label="Cliente"
+                placeholder="Selecione um cliente"
+                target-object="Account"
+                object-icon-name="standard:person_account"
+                search-field-list={accountFields}
+                text-options={accountOptions}
+                standard-form-layout="true"
+                onselectrecord={selectItemRegister}
+                onclearselectedrecord={removeItemRegister}
+                disabled={disabledField}
+                required>
+            </c-lookup>
+            <c-lookup
+                data-target-id="address"
+                input-label="Endereços"
+                placeholder="Selecione um endereço"
+                target-object="Address__c"
+                object-icon-name="standard:address"
+                search-field-list={addressFields}
+                text-options={addressOptions}
+                standard-form-layout="true"
+                onselectrecord={selectItemRegister}
+                onclearselectedrecord={removeItemRegister}
+                disabled={disabledField}
+                required>
+            </c-lookup>
+            <button onclick={searchRecords} type="button" style={getStyle} disabled={disabledField}>
+                <span>PESQUISAR</span>
+                <svg style="float:right;" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M15.2607 13.9378L11.1377 9.84548C11.9684 8.67625 12.3992 7.19933 12.1838 5.6301C11.8146 2.98394 9.66075 0.891636 6.98383 0.645482C3.35306 0.276251 0.276134 3.35317 0.645365 7.01471C0.891519 9.66087 2.98383 11.8455 5.62998 12.2147C7.19921 12.4301 8.67613 11.9993 9.84536 11.1686L13.9377 15.2609C14.1223 15.4455 14.3992 15.4455 14.5838 15.2609L15.23 14.6147C15.4146 14.4301 15.4146 14.1224 15.2607 13.9378V13.9378ZM2.46075 6.4301C2.46075 4.24548 4.24537 2.46087 6.42998 2.46087C8.6146 2.46087 10.3992 4.24548 10.3992 6.4301C10.3992 8.61471 8.6146 10.3993 6.42998 10.3993C4.24537 10.3993 2.46075 8.64548 2.46075 6.4301V6.4301Z" fill="#F2F2F2"></path>
+                </svg>
+            </button>
+        </div>
+        <lightning-input 
+            type="checkbox" 
+            name="xlsxFile" 
+            onchange={handleCheckBoxChange} 
+            checked={isXLSX} 
+            label="Exportar como XLSX">
+        </lightning-input>
+        <lightning-input 
+            type="checkbox" 
+            name="xlsFile" 
+            onchange={handleCheckBoxChange} 
+            checked={isXLS} 
+            label="Exportar como XLS">
+        </lightning-input>
+        <lightning-datatable
+            key-field="id"
+            columns={columns}
+            data={datas}
+            style="min-width: 520px">
+        </lightning-datatable>
+        <div class="execution">
+            <a onclick={buttonLogic}>
+                <span>{buttonText}</span>
+                <svg style="margin-left: 15px;color: white" width="11" height="19" viewBox="0 0 11 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="#FFF" d="M2.1868 18.1771L10.6971 9.33859L2.18681 0.500045L0.76758 1.97296L7.8607 9.33859L0.767579 16.7042L2.1868 18.1771Z"></path>
+                </svg> 
+            </a>
+        </div>
+    </div>
+</template>
