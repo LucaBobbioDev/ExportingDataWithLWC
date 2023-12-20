@@ -1,5 +1,5 @@
 # Exporting Data With LWC - Salesforce
-Simples projeto desenevolvido no CRM Salesforce onde foi desenvolvido a funcionalidade de exportação de dados de registros de pedidos (Order) em formato de planilhas excel (xls ou xlsx) a partir de uma tela customizada feita com Lightning Web Components.
+Simples projeto realizado e desenvolvido no CRM Salesforce onde foi desenvolvido a funcionalidade de exportação de dados de registros de pedidos (Order) em formato de planilhas excel (xls ou xlsx) a partir de uma tela customizada feita com Lightning Web Components.
 
 ### Componentes de Lightning Web Components
 1 - Lookup: Componente de pesquisa de registros localizados na base de dados da org;
