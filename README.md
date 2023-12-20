@@ -26,7 +26,7 @@ Tela com dados preenchidos:
 ![Export Data Screen with data](https://github.com/LucaBobbioDev/ExportingDataWithLWC/assets/95222294/1a768349-2eec-423c-9003-34e305c94e3b)
 
 ### Excel
-Arquivo Excel que for gerado:
+Arquivo Excel que foi gerado:
 ![Excel File](https://github.com/LucaBobbioDev/ExportingDataWithLWC/assets/95222294/5c985a95-bdfa-4376-8f3e-1150cafedc7f)
 
 
