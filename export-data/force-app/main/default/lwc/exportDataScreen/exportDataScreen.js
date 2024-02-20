@@ -5,7 +5,10 @@ import { loadScript } from "lightning/platformResourceLoader";
 import getOrderDataToExport from '@salesforce/apex/ExportDataController.getOrderDataToExport';
 import workbook from "@salesforce/resourceUrl/writeexcelfile";
 
-
+/**
+ * The columns configuration for a lightning-datatable.
+ * @type {Object[]}
+ */
 const columns = [
     { label: 'Nome da Conta', fieldName: 'accountName' },
     { label: 'Código do Pedido', fieldName: 'orderNumber' },
@@ -14,6 +17,10 @@ const columns = [
     { label: 'Valor Total', fieldName: 'orderTotalAmount' },
 ];
 
+/**
+ * Represents the ExportDataScreen component responsible for exporting data.
+ * @extends {LightningElement}
+ */
 export default class ExportDataScreen extends LightningElement {
     @track disabledField = false;
     @track isXLSX = false;
@@ -30,14 +37,27 @@ export default class ExportDataScreen extends LightningElement {
     
     columns = columns;
 
+    /**
+     * Gets the text for the export button based on file format selection.
+     * @type {string}
+     */
     get buttonText() {
         return !this.isXLS && !this.isXLSX ? 'Exportar':(this.isXLS && !this.isXLSX ? 'Exportar XLS' : 'Exportar XLSX');
     }
 
+    /**
+     * Gets the style for the export button.
+     * @type {string}
+     */
     get getStyle() {
         return 'width: ' + this.percentage + '% !important';
     }
 
+    /**
+     * Defines the logic for the export button based on file format selection.
+     * @type {Getter}
+     * @returns {Function} A function that executes the appropriate export method based on the selected file format.
+     */
     get buttonLogic(){
         return () => this.isXLS ? this.exportOrderData() : this.exportToXLSX();
     }
@@ -54,6 +74,11 @@ export default class ExportDataScreen extends LightningElement {
             });
     }
 
+    /**
+     * Searches for records based on the selected account and address. 
+     * If both account and address are selected, it fetches order data to export.
+     * @returns {void} This function does not return a value directly. It asynchronously updates the component's state.
+     */
     searchRecords() {
         if (this.isFilled(this.selectedAccount) && this.isFilled(this.selectedAddress)) {
             getOrderDataToExport({ accountId: this.selectedAccount.Id, addressId: this.selectedAddress.Id })
@@ -75,6 +100,10 @@ export default class ExportDataScreen extends LightningElement {
         }
     }
 
+    /**
+     * Handles the selection of an item in the registration process.
+     * @param {Event} event - The event containing the selected record details.
+     */
     selectItemRegister(event){
         const { record } = event.detail;
         if(event.target.dataset.targetId == 'account'){
@@ -84,6 +113,10 @@ export default class ExportDataScreen extends LightningElement {
         }
     }
 
+    /**
+     * Removes the selected item from the registration process.
+     * @param {Event} event - The event containing the target ID of the item to be removed.
+     */
     removeItemRegister(event){
         if(event.target.dataset.targetId == 'account'){
             this.selectedAccount = '';
@@ -92,6 +125,10 @@ export default class ExportDataScreen extends LightningElement {
         }
     }
 
+    /**
+     * Handles the change event of a checkbox.
+     * @param {Event} event - The event triggered by the checkbox change.
+     */
     handleCheckBoxChange(event){
         const { name, checked } = event.target;
 
@@ -100,6 +137,11 @@ export default class ExportDataScreen extends LightningElement {
         this.disabledField = checked && (this.isXLSX || this.isXLS);
     }
 
+    /**
+     * Builds a report document based on selected rows and export format.
+     * @returns {string|string[]} The report document content as a string if the export format is XLS, 
+     * or an array of selected rows if the export format is XLSX.
+     */
     buildReportDoc(){
         let selectedRows = this.template.querySelector("lightning-datatable").getSelectedRows();
 
@@ -132,6 +174,10 @@ export default class ExportDataScreen extends LightningElement {
         }
     }
 
+    /**
+     * Exports order data to a downloadable file.
+     * @returns {void} This method initiates the download process if the report is successfully generated, otherwise it displays an error toast.
+     */
     exportOrderData(){
         let report = this.buildReportDoc();
         if(this.isFilled(report)){
@@ -150,9 +196,19 @@ export default class ExportDataScreen extends LightningElement {
         }    
     }
 
+    /**
+     * Asynchronously exports order data to an XLSX file.
+     * @returns {Promise<void>} A Promise that resolves after the XLSX file is generated and a success toast is displayed, 
+     * or rejects if the report generation fails and an error toast is displayed.
+     */
     async exportToXLSX(){
         let _self = this;
         let data = _self.buildReportDoc();
+
+        /**
+         * Configuration schema for defining column properties in an export document.
+         * @type {Object[]}
+         */
         const schema = [
             {
               column: 'Nome da Conta',
@@ -232,10 +288,22 @@ export default class ExportDataScreen extends LightningElement {
         }
     }
     
+    /**
+     * Checks if a field is filled with data.
+     * @param {*} field - The field to be checked for data.
+     * @returns {boolean} Returns true if the field isn't undefined, not null, not an empty string, not an empty array, or not equal to 0.
+     * Otherwise, returns false.
+     */
     isFilled(field) {
         return ((field !== undefined && field != null && field != '') || field == 0 || field == []);
     }
 
+    /**
+    * Displays a toast message with the specified type, title, and message.
+    * @param {string} type - The type of toast message (error, warning, success).
+    * @param {string} title - The title of the toast message.
+    * @param {string} message - The content of the toast message.
+    */
     showToast(type, title, message) {
         let event = new ShowToastEvent({
             variant: type,
