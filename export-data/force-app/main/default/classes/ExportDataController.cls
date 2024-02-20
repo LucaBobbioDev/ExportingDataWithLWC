@@ -1,4 +1,18 @@
+/********************************************************************************************
+* @ClassName : ExportDataController
+* @Purpose   : Controller class for exportDataScreen lwc component
+* @Author    : Luca Bobbio
+* @Date      : 19/12/2023
+
+********************************************************************************************/
 public with sharing class ExportDataController {
+    /*
+    * @MethodName : getOrderDataToExport
+    * @Purpose    : Query Order records using parameter as a filter, returns query records serialize as JSON
+    * @Return     : String JSON.serialize()
+    * @Parameters : String accountId, String addressId
+    * @Author     : Luca Bobbio
+    */ 
     @AuraEnabled(cacheable=true)
     public static String getOrderDataToExport(String accountId, String addressId){
         List<OrderData> ordersToExport = new List<OrderData>();
@@ -31,6 +45,12 @@ public with sharing class ExportDataController {
             return e.getMessage();
         }
     }
+
+    /*
+    * @InnerClassName : OrderData
+    * @Purpose        : Order model for lwc
+    * @Author         : Luca Bobbio
+    */
     public class OrderData {
         public String orderId {get; set;}
         public String orderNumber {get;set;}
